@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
+use Symfony\Component\Routing\Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    $data = [
+        'name' => 'World',
+    ];
+    return view('home', $data);
+})->name('home');
+
+Route::get('/about', function () {
+    $data = [
+        'titolo' => 'Pagina About ♫',
+    ];
+    return view('about', $data);
+})->name('about');;
+
+Route::get('/contact', function () {
+    $data = [
+        'titolo' => 'My contacts ♫',
+    ];
+    return view('contact', $data);
+})->name('contact');;
